@@ -579,6 +579,8 @@
 
 	<string name="title_checkbox_back_as_meta">返回鍵作為 Meta</string>
 	<string name="summary_back_as_meta">在按下實體返回鍵時送出 Meta（Win）鍵。</string>
+	<string name="title_checkbox_right_alt_as_meta">右 Alt 鍵作為 Command 鍵（Mac）</string>
+	<string name="summary_right_alt_as_meta">串流 Mac 時，將右 Alt 鍵對應為 Command 鍵。任何「右 Alt + 按鍵」的組合都會變成「Command + 按鍵」，左 Alt 鍵不受影響。</string>
 	<string name="title_back_as_guide">返回鍵作為 Guide</string>
 	<string name="summary_back_as_guide">在手把上按下返回鍵時送出 Guide（PS/HOME）按鍵。</string>
 
@@ -789,6 +791,18 @@
 	<string name="title_low_latency_frame_balance">低延遲隊列（實驗性）</string>
 	<string name="summary_low_latency_frame_balance">透過丟棄緩衝幀以最小化延遲。</string>
 	<string name="category_perf_monitor_settings">效能監視器</string>
+	<string name="category_perf_charts">效能圖表</string>
+	<string name="desc_chart_latency">網路延遲圖表</string>
+	<string name="desc_chart_decode">解碼時間圖表</string>
+	<string name="desc_chart_fps">FPS 圖表</string>
+	<string name="title_enable_perf_charts">啟用效能圖表</string>
+	<string name="summary_enable_perf_charts">在遊戲浮動資訊中顯示效能圖表</string>
+	<string name="title_perf_chart_latency">圖表：網路延遲</string>
+	<string name="summary_perf_chart_latency">平均網路延遲圖表（毫秒）</string>
+	<string name="title_perf_chart_decode">圖表：解碼時間</string>
+	<string name="summary_perf_chart_decode">影格解碼時間圖表（毫秒）</string>
+	<string name="title_perf_chart_fps">圖表：FPS</string>
+	<string name="summary_perf_chart_fps">每秒接收／繪製影格數圖表</string>
 
 	<string name="title_checkbox_full_screen">啟用全螢幕</string>
 	<string name="summary_checkbox_full_screen">以沉浸模式隱藏系統列</string>
