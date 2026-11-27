@@ -92,7 +92,7 @@
 	<string name="message_decoding_reset">您的裝置影片解碼器在目前的串流設定下持續當機，串流設定已重設為預設值。</string>
 	<string name="error_usb_prohibited">您的裝置管理員禁止存取 USB。請檢查 Knox 或 MDM 設定。</string>
 	<string name="unable_to_pin_shortcut">您目前的啟動器不允許建立釘選捷徑。</string>
-	<string name="video_decoder_init_failed">影片解碼器初始化失敗。您的裝置可能不支援所選的解析度或影格率。</string>
+	<string name="video_decoder_init_failed">影片解碼器初始化失敗。您的裝置可能不支援所選的解析度或幀率。</string>
 	<string name="no_video_received_error">未接收到主機端的影像。</string>
 	<string name="no_frame_received_error">您的網路效能不佳。請降低影片位元率設定，或使用更快的連線。</string>
 	<string name="early_termination_error">在啟動串流時，您的主機電腦發生錯誤。\n\n請確認主機端未開啟任何受 DRM 保護的內容。您也可以嘗試重新啟動主機電腦。</string>
@@ -103,7 +103,7 @@
 	<string name="conn_establishing_title">正在建立連線</string>
 	<string name="conn_establishing_msg">正在啟動連線</string>
 	<string name="conn_metered">警告：您目前的網路連線為計量網路！</string>
-	<string name="conn_client_latency">平均影格解碼延遲：</string>
+	<string name="conn_client_latency">平均幀解碼延遲：</string>
 	<string name="conn_client_latency_hw">硬體解碼器延遲：</string>
 	<string name="conn_hardware_latency">平均硬體解碼延遲：</string>
 	<string name="conn_starting">正在啟動</string>
@@ -127,10 +127,10 @@
 	<string name="poor_connection_msg">與電腦的連線品質不佳</string>
 	<string name="perf_overlay_streamdetails">影片串流：%1$s %2$.2f FPS</string>
 	<string name="perf_overlay_decoder">解碼器：%1$s</string>
-	<string name="perf_overlay_incomingfps">從網路接收的影格率：%1$.2f FPS</string>
-	<string name="perf_overlay_renderingfps">渲染影格率：%1$.2f FPS</string>
+	<string name="perf_overlay_incomingfps">從網路接收的幀率：%1$.2f FPS</string>
+	<string name="perf_overlay_renderingfps">渲染幀率：%1$.2f FPS</string>
 	<string name="perf_overlay_hostprocessinglatency">主機處理延遲 最小/最大/平均：%1$.1f/%2$.1f/%3$.1f ms</string>
-	<string name="perf_overlay_netdrops">因網路連線中斷的影格：%1$.2f%%</string>
+	<string name="perf_overlay_netdrops">因網路連線中斷的幀：%1$.2f%%</string>
 	<string name="perf_overlay_netlatency">平均網路延遲：%1$d ms（變異：%2$d ms）</string>
 	<string name="perf_overlay_dectime">平均解碼時間：%1$.2f ms</string>
 	<string name="perf_overlay_drawdelay">延遲：%1$.2f ms</string>
@@ -189,7 +189,7 @@
 	<string name="summary_resolution_list">提高以改善影像清晰度。降低以便在低階裝置和較慢的網路上獲得更佳效能。</string>
 	<string name="title_native_res_dialog">原生解析度警告</string>
 	<string name="text_native_res_dialog">串流伺服器可能不支援原生解析度和/或 FPS。您可能需要手動為主機電腦設定相符的自訂顯示模式。\n\n若您選擇在 NVIDIA 控制面板中建立自訂解析度以符合螢幕設定，請務必閱讀並理解 NVIDIA 對可能造成的螢幕損壞、電腦不穩定和其他潛在問題的警告。\n\n因在您的電腦上建立自訂解析度所導致的任何問題，我們概不負責。\n\n您的螢幕可能不支援必要的顯示配置。如果是這樣，您可以嘗試設定虛擬螢幕。最後，如果您的裝置或主機電腦不支援在特定解析度或更新率下進行串流，很遺憾將無法使用。</string>
-	<string name="title_fps_list">影片影格率</string>
+	<string name="title_fps_list">影片幀率</string>
 	<string name="summary_fps_list">提高可讓影片串流更流暢。降低則可在低階裝置上獲得更佳效能。</string>
 	<string name="title_seekbar_bitrate">影片位元率</string>
 	<string name="summary_seekbar_bitrate">提高以獲得更佳的影像品質。降低則可在較慢的連線上改善效能。</string>
@@ -294,13 +294,13 @@
 	<string name="summary_checkbox_host_audio">在電腦與此裝置同時播放音訊</string>
 
 	<string name="category_advanced_settings">進階設定</string>
-	<string name="title_unlock_fps">解鎖所有可用影格率</string>
+	<string name="title_unlock_fps">解鎖所有可用幀率</string>
 	<string name="summary_unlock_fps">在高階裝置上以 90 或 120 FPS 串流可降低延遲，但在不支援的裝置上可能造成延遲或不穩定</string>
 	<string name="title_checkbox_reduce_refresh_rate">允許降低更新率</string>
 	<string name="summary_checkbox_reduce_refresh_rate">較低的螢幕更新率可節省電力，但會增加部分影片延遲</string>
 	<string name="title_checkbox_disable_warnings">停用警告訊息</string>
 	<string name="summary_checkbox_disable_warnings">串流時停用螢幕上的連線警告訊息</string>
-	<string name="title_disable_frame_drop">永不捨棄影格</string>
+	<string name="title_disable_frame_drop">永不丟幀</string>
 	<string name="summary_disable_frame_drop">可減少部分裝置的微卡頓，但可能增加延遲</string>
 	<string name="title_video_format">變更編碼器設定</string>
 	<string name="summary_video_format">若裝置支援，較新的編碼器可降低影片頻寬需求。若主機軟體或 GPU 不支援，編碼器選擇可能被忽略。</string>
@@ -352,7 +352,7 @@
 	<string name="videoformat_hevcalways">優先使用 HEVC</string>
 	<string name="videoformat_h264always">優先使用 H.264</string>
 
-	<string name="title_frame_pacing">影片影格節奏控制</string>
+	<string name="title_frame_pacing">影片幀律控制</string>
 	<string name="summary_frame_pacing">指定如何在影片延遲與流暢度之間取得平衡</string>
 	<string name="pacing_warp">Warp Drive（實驗性）</string>
 	<string name="pacing_warp2">Warp 2（實驗性）</string>
@@ -610,10 +610,10 @@
 	<string name="summary_checkbox_ultra_low_latency">僅對 SD8Gen2/8(s)Gen3/8Elite 與 MTK 裝置有效。</string>
 
 	<string name="title_checkbox_forceTightThresholds">緊密 VSync（實驗性）</string>
-	<string name="summary_checkbox_forceTightThresholds">更緊的 VSync 門檻以降低延遲；可能增加掉影格。</string>
+	<string name="summary_checkbox_forceTightThresholds">更緊的 VSync 門檻以降低延遲；可能增加掉幀。</string>
 
 	<string name="title_checkbox_use_virtual_display">使用虛擬顯示器</string>
-	<string name="summary_checkbox_use_virtual_display">預設使用虛擬顯示器。\n虛擬顯示器可自動符合用戶端解析度與影格率設定，帶來無縫的串流體驗。\n需要 Apollo 作為主機串流軟體。</string>
+	<string name="summary_checkbox_use_virtual_display">預設使用虛擬顯示器。\n虛擬顯示器可自動符合用戶端解析度與幀率設定，帶來無縫的串流體驗。\n需要 Apollo 作為主機串流軟體。</string>
 
 	<string name="title_checkbox_resume_without_confirm">快速繼續</string>
 	<string name="summary_checkbox_resume_without_confirm">按下繼續按鈕時不顯示選單，直接繼續應用程式。</string>
@@ -789,7 +789,7 @@
 	<string name="save">儲存</string>
 
 	<string name="title_low_latency_frame_balance">低延遲佇列（實驗性）</string>
-	<string name="summary_low_latency_frame_balance">透過捨棄緩衝影格以最小化延遲。</string>
+	<string name="summary_low_latency_frame_balance">透過捨棄緩衝幀以最小化延遲。</string>
 	<string name="category_perf_monitor_settings">效能監視器</string>
 	<string name="category_perf_charts">效能圖表</string>
 	<string name="desc_chart_latency">網路延遲圖表</string>
@@ -800,9 +800,9 @@
 	<string name="title_perf_chart_latency">圖表：網路延遲</string>
 	<string name="summary_perf_chart_latency">平均網路延遲圖表（毫秒）</string>
 	<string name="title_perf_chart_decode">圖表：解碼時間</string>
-	<string name="summary_perf_chart_decode">影格解碼時間圖表（毫秒）</string>
+	<string name="summary_perf_chart_decode">幀解碼時間圖表（毫秒）</string>
 	<string name="title_perf_chart_fps">圖表：FPS</string>
-	<string name="summary_perf_chart_fps">每秒接收／繪製影格數圖表</string>
+	<string name="summary_perf_chart_fps">每秒接收／繪製幀數圖表</string>
 
 	<string name="title_checkbox_full_screen">啟用全螢幕</string>
 	<string name="summary_checkbox_full_screen">以沉浸模式隱藏系統列</string>
