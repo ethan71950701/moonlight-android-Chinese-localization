@@ -1,0 +1,34 @@
+name: Build debug APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ccr-ddfc365f-4k8n4f]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Install NDK
+        run: sdkmanager "ndk;27.0.12077973"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Build nonRoot debug APK
+        run: ./gradlew --no-daemon :app:assembleNonRootDebug
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: moonlight-nonRoot-debug-apk
+          path: app/build/outputs/apk/nonRoot/debug/*.apk
