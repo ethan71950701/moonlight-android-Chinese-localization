@@ -154,7 +154,7 @@ public class StreamSettings extends AppCompatActivity {
                 startActivity(intent, null);
             } else {
                 if (newPrefs.language == PreferenceConfiguration.DEFAULT_LANGUAGE) {
-                    Toast.makeText(this, "Language has been reset to default, please restart the app!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, R.string.toast_language_reset_default, Toast.LENGTH_LONG).show();
                     System.exit(0);
                 }
             }
@@ -664,7 +664,7 @@ public class StreamSettings extends AppCompatActivity {
                     CheckBoxPreference hdrPref = (CheckBoxPreference) category.findPreference("checkbox_enable_hdr");
                     hdrPref.setEnabled(false);
                     hdrPref.setChecked(false);
-                    hdrPref.setSummary("Update the firmware on your NVIDIA SHIELD Android TV to enable HDR");
+                    hdrPref.setSummary(R.string.summary_hdr_shield_update);
                 }
             }
 

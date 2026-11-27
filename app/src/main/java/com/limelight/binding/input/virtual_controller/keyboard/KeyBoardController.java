@@ -495,7 +495,7 @@ public class KeyBoardController {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(context, "Error loading custom keys: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, context.getString(R.string.toast_error_loading_custom_keys, e.getMessage()), Toast.LENGTH_SHORT).show();
                 }
             }
 

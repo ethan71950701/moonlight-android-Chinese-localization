@@ -1,6 +1,7 @@
 package com.limelight.nvstream;
 
 import static java.lang.Thread.sleep;
+import com.limelight.R;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -230,7 +231,7 @@ public class NvConnection {
         
         context.serverAppVersion = h.getServerVersion(serverInfo);
         if (context.serverAppVersion == null) {
-            context.connListener.displayMessage("Server version malformed");
+            context.connListener.displayMessage(appContext.getString(R.string.nv_server_version_malformed));
             return false;
         }
 
@@ -241,7 +242,7 @@ public class NvConnection {
         context.serverGfeVersion = h.getGfeVersion(serverInfo);
                 
         if (h.getPairState(serverInfo) != PairingManager.PairState.PAIRED) {
-            context.connListener.displayMessage("Device not paired with computer");
+            context.connListener.displayMessage(appContext.getString(R.string.nv_not_paired));
             return false;
         }
 
@@ -249,7 +250,7 @@ public class NvConnection {
 
         context.negotiatedHdr = (context.streamConfig.getSupportedVideoFormats() & MoonBridge.VIDEO_FORMAT_MASK_10BIT) != 0;
         if ((context.serverCodecModeSupport & 0x20200) == 0 && context.negotiatedHdr) {
-            context.connListener.displayTransientMessage("Your PC GPU does not support streaming HDR. The stream will be SDR.");
+            context.connListener.displayTransientMessage(appContext.getString(R.string.nv_hdr_unsupported_sdr));
             context.negotiatedHdr = false;
         }
         
@@ -260,17 +261,17 @@ public class NvConnection {
         // Check for a supported stream resolution
         if ((context.streamConfig.getWidth() > 4096 || context.streamConfig.getHeight() > 4096) &&
                 (h.getServerCodecModeSupport(serverInfo) & 0x200) == 0 && context.isNvidiaServerSoftware) {
-            context.connListener.displayMessage("Your host PC does not support streaming at resolutions above 4K.");
+            context.connListener.displayMessage(appContext.getString(R.string.nv_host_no_above_4k));
             return false;
         }
         else if ((context.streamConfig.getWidth() > 4096 || context.streamConfig.getHeight() > 4096) &&
                 (context.streamConfig.getSupportedVideoFormats() & ~MoonBridge.VIDEO_FORMAT_MASK_H264) == 0) {
-            context.connListener.displayMessage("Your streaming device must support HEVC or AV1 to stream at resolutions above 4K.");
+            context.connListener.displayMessage(appContext.getString(R.string.nv_client_needs_hevc_av1));
             return false;
         }
         else if (context.streamConfig.getHeight() >= 2160 && !h.supports4K(serverInfo)) {
             // Client wants 4K but the server can't do it
-            context.connListener.displayTransientMessage("You must update GeForce Experience to stream in 4K. The stream will be 1080p.");
+            context.connListener.displayTransientMessage(appContext.getString(R.string.nv_update_gfe_for_4k));
             
             // Lower resolution to 1080p
             context.negotiatedWidth = 1920;
@@ -305,7 +306,7 @@ public class NvConnection {
             LimeLog.info("Using deprecated app lookup method - Please specify an app ID in your StreamConfiguration instead");
             app = h.getAppByName(context.streamConfig.getApp().getAppName());
             if (app == null) {
-                context.connListener.displayMessage("The app " + context.streamConfig.getApp().getAppName() + " is not in GFE app list");
+                context.connListener.displayMessage(appContext.getString(R.string.nv_app_not_in_list, context.streamConfig.getApp().getAppName()));
                 return false;
             }
         }
@@ -315,7 +316,7 @@ public class NvConnection {
             try {
                 if (h.getCurrentGame(serverInfo) == app.getAppId() || Objects.equals(h.getCurrentGameUUID(serverInfo), app.getAppUUID())) {
                     if (!h.launchApp(context, "resume", app.getAppUUID(), app.getAppId(), context.negotiatedHdr)) {
-                        context.connListener.displayMessage("Failed to resume existing session");
+                        context.connListener.displayMessage(appContext.getString(R.string.nv_resume_failed));
                         return false;
                     }
                 } else if (Objects.equals(NvApp.REMOTE_INPUT_UUID, app.getAppUUID())) {
@@ -328,14 +329,11 @@ public class NvConnection {
                 if (e.getErrorCode() == 470) {
                     // This is the error you get when you try to resume a session that's not yours.
                     // Because this is fairly common, we'll display a more detailed message.
-                    context.connListener.displayMessage("This session wasn't started by this device," +
-                            " so it cannot be resumed. End streaming on the original " +
-                            "device or the PC itself and try again. (Error code: "+e.getErrorCode()+")");
+                    context.connListener.displayMessage(appContext.getString(R.string.error_session_not_yours_resume, e.getErrorCode()));
                     return false;
                 }
                 else if (e.getErrorCode() == 525) {
-                    context.connListener.displayMessage("The application is minimized. Resume it on the PC manually or " +
-                            "quit the session and start streaming again.");
+                    context.connListener.displayMessage(appContext.getString(R.string.nv_app_minimized));
                     return false;
                 } else {
                     throw e;
@@ -354,14 +352,12 @@ public class NvConnection {
             XmlPullParserException {
         try {
             if (!h.quitApp()) {
-                context.connListener.displayMessage("Failed to quit previous session! You must quit it manually");
+                context.connListener.displayMessage(appContext.getString(R.string.nv_quit_previous_failed));
                 return false;
             } 
         } catch (HostHttpResponseException e) {
             if (e.getErrorCode() == 599) {
-                context.connListener.displayMessage("This session wasn't started by this device," +
-                        " so it cannot be quit. End streaming on the original " +
-                        "device or the PC itself. (Error code: "+e.getErrorCode()+")");
+                context.connListener.displayMessage(appContext.getString(R.string.error_session_not_yours_quit, e.getErrorCode()));
                 return false;
             }
             else {
@@ -376,7 +372,7 @@ public class NvConnection {
             throws IOException, XmlPullParserException {
         // Launch the app since it's not running
         if (!h.launchApp(context, "launch", context.streamConfig.getApp().getAppUUID(), context.streamConfig.getApp().getAppId(), context.negotiatedHdr)) {
-            context.connListener.displayMessage("Failed to launch application");
+            context.connListener.displayMessage(appContext.getString(R.string.nv_launch_failed));
             return false;
         }
         

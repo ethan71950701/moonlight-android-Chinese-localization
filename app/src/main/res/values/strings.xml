@@ -743,4 +743,36 @@
 
     <string name="title_checkbox_full_screen">Enable Full Screen</string>
     <string name="summary_checkbox_full_screen">Hide system bars with immersive mode</string>
+
+    <string name="vc_config_title">Configuration</string>
+    <string name="vc_config_move">Move</string>
+    <string name="vc_config_resize">Resize</string>
+    <string name="toast_mouse_emulation_on">Mouse emulation is: ON</string>
+    <string name="toast_mouse_emulation_off">Mouse emulation is: OFF</string>
+    <string name="toast_hdr_display_unsupported">Display does not support HDR10</string>
+    <string name="toast_hdr_requires_android7">HDR requires Android 7.0 or later</string>
+    <string name="toast_hdr_decoder_unsupported">Decoder does not support HDR10 profile</string>
+    <string name="toast_no_hevc_decoder">No HEVC decoder found</string>
+    <string name="toast_no_av1_decoder">No AV1 decoder found</string>
+    <string name="error_no_h264_hw_decoder">This device or ROM doesn\'t support hardware accelerated H.264 playback.</string>
+    <string name="toast_language_reset_default">Language has been reset to default, please restart the app!</string>
+    <string name="summary_hdr_shield_update">Update the firmware on your NVIDIA SHIELD Android TV to enable HDR</string>
+    <string name="error_session_not_yours_quit">This session wasn\'t started by this device, so it cannot be quit. End streaming on the original device or the PC itself. (Error code: %1$d)</string>
+    <string name="error_session_not_yours_resume">This session wasn\'t started by this device, so it cannot be resumed. End streaming on the original device or the PC itself and try again. (Error code: %1$d)</string>
+    <string name="toast_error_loading_custom_keys">Error loading custom keys: %1$s</string>
+    <string name="error_reading_art_file">Error reading .art file: %1$s</string>
+    <string name="cd_edit_profile">Edit profile</string>
+    <string name="cd_delete_profile">Delete profile</string>
+    <string name="nv_server_version_malformed">Server version malformed</string>
+    <string name="nv_not_paired">Device not paired with computer</string>
+    <string name="nv_hdr_unsupported_sdr">Your PC GPU does not support streaming HDR. The stream will be SDR.</string>
+    <string name="nv_host_no_above_4k">Your host PC does not support streaming at resolutions above 4K.</string>
+    <string name="nv_client_needs_hevc_av1">Your streaming device must support HEVC or AV1 to stream at resolutions above 4K.</string>
+    <string name="nv_update_gfe_for_4k">You must update GeForce Experience to stream in 4K. The stream will be 1080p.</string>
+    <string name="nv_app_not_in_list">The app %1$s is not in GFE app list</string>
+    <string name="nv_resume_failed">Failed to resume existing session</string>
+    <string name="nv_app_minimized">The application is minimized. Resume it on the PC manually or quit the session and start streaming again.</string>
+    <string name="nv_quit_previous_failed">Failed to quit previous session! You must quit it manually</string>
+    <string name="nv_launch_failed">Failed to launch application</string>
+    <string name="language_default">Default</string>
 </resources>

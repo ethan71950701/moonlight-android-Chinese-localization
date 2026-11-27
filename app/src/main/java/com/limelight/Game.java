@@ -621,11 +621,11 @@ public class Game extends AppCompatActivity implements SurfaceHolder.Callback,
 
                     if (!willStreamHdr) {
                         // Nope, no HDR for us :(
-                        Toast.makeText(this, "Display does not support HDR10", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, R.string.toast_hdr_display_unsupported, Toast.LENGTH_LONG).show();
                     }
                 }
                 else {
-                    Toast.makeText(this, "HDR requires Android 7.0 or later", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, R.string.toast_hdr_requires_android7, Toast.LENGTH_LONG).show();
                 }
             }
         }
@@ -707,16 +707,16 @@ public class Game extends AppCompatActivity implements SurfaceHolder.Callback,
 // Don't stream HDR if the decoder can't support it
         if (willStreamHdr && !decoderRenderer.isHevcMain10Hdr10Supported() && !decoderRenderer.isAv1Main10Supported()) {
             willStreamHdr = false;
-            Toast.makeText(this, "Decoder does not support HDR10 profile", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toast_hdr_decoder_unsupported, Toast.LENGTH_LONG).show();
         }
         // Display a message to the user if HEVC was forced on but we still didn't find a decoder
         if (prefConfig.videoFormat == PreferenceConfiguration.FormatOption.FORCE_HEVC && !decoderRenderer.isHevcSupported()) {
-            Toast.makeText(this, "No HEVC decoder found", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toast_no_hevc_decoder, Toast.LENGTH_LONG).show();
         }
 
         // Display a message to the user if AV1 was forced on but we still didn't find a decoder
         if (prefConfig.videoFormat == PreferenceConfiguration.FormatOption.FORCE_AV1 && !decoderRenderer.isAv1Supported()) {
-            Toast.makeText(this, "No AV1 decoder found", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toast_no_av1_decoder, Toast.LENGTH_LONG).show();
         }
 
         // H.264 is always supported
@@ -857,7 +857,7 @@ public class Game extends AppCompatActivity implements SurfaceHolder.Callback,
 
             // If we can't find an AVC decoder, we can't proceed
             Dialog.displayDialog(this, getResources().getString(R.string.conn_error_title),
-                    "This device or ROM doesn't support hardware accelerated H.264 playback.", true);
+                    getResources().getString(R.string.error_no_h264_hw_decoder), true);
             return;
         }
 

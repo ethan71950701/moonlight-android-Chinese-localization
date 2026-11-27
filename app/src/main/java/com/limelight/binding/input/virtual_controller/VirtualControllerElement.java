@@ -5,6 +5,7 @@
 package com.limelight.binding.input.virtual_controller;
 
 import android.app.AlertDialog;
+import com.limelight.R;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Canvas;
@@ -185,17 +186,17 @@ public abstract class VirtualControllerElement extends View {
     protected void showConfigurationDialog() {
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getContext());
 
-        alertBuilder.setTitle("Configuration");
+        alertBuilder.setTitle(getContext().getString(R.string.vc_config_title));
 
         CharSequence functions[] = new CharSequence[]{
-                "Move",
-                "Resize",
+                getContext().getString(R.string.vc_config_move),
+                getContext().getString(R.string.vc_config_resize),
             /*election
             "Set n
             Disable color sormal color",
             "Set pressed color",
             */
-                "Cancel"
+                getContext().getString(R.string.cancel)
         };
 
         alertBuilder.setItems(functions, new DialogInterface.OnClickListener() {

@@ -344,7 +344,7 @@ public class ShortcutTrampoline extends AppCompatActivity {
             Log.e(TAG, "Error reading .art file", e);
             Dialog.displayDialog(ShortcutTrampoline.this,
                     getResources().getString(R.string.conn_error_title),
-                    "Error reading .art file: " + e.getMessage(),
+                    getResources().getString(R.string.error_reading_art_file, e.getMessage()),
                     true);
         }
         return artData;

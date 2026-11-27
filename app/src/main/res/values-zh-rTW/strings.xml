@@ -29,7 +29,7 @@
 	<string name="pcview_menu_pair_pc">傳統配對</string>
 	<string name="pcview_menu_pair_pc_otp">OTP 配對</string>
 	<string name="pcview_menu_unpair_pc">取消配對</string>
-	<string name="pcview_menu_send_wol">發送 Wake-On-LAN 請求</string>
+	<string name="pcview_menu_send_wol">傳送 Wake-On-LAN 請求</string>
 	<string name="pcview_menu_delete_pc">刪除電腦</string>
 	<string name="pcview_menu_test_network">測試網路連線</string>
 	<string name="pcview_menu_details">檢視詳細資訊</string>
@@ -92,7 +92,7 @@
 	<string name="message_decoding_reset">您的裝置影片解碼器在目前的串流設定下持續當機，串流設定已重設為預設值。</string>
 	<string name="error_usb_prohibited">您的裝置管理員禁止存取 USB。請檢查 Knox 或 MDM 設定。</string>
 	<string name="unable_to_pin_shortcut">您目前的啟動器不允許建立釘選捷徑。</string>
-	<string name="video_decoder_init_failed">影片解碼器初始化失敗。您的裝置可能不支援所選的解析度或幀率。</string>
+	<string name="video_decoder_init_failed">影片解碼器初始化失敗。您的裝置可能不支援所選的解析度或影格率。</string>
 	<string name="no_video_received_error">未接收到主機端的影像。</string>
 	<string name="no_frame_received_error">您的網路效能不佳。請降低影片位元率設定，或使用更快的連線。</string>
 	<string name="early_termination_error">在啟動串流時，您的主機電腦發生錯誤。\n\n請確認主機端未開啟任何受 DRM 保護的內容。您也可以嘗試重新啟動主機電腦。</string>
@@ -130,14 +130,14 @@
 	<string name="perf_overlay_incomingfps">從網路接收的影格率：%1$.2f FPS</string>
 	<string name="perf_overlay_renderingfps">渲染影格率：%1$.2f FPS</string>
 	<string name="perf_overlay_hostprocessinglatency">主機處理延遲 最小/最大/平均：%1$.1f/%2$.1f/%3$.1f ms</string>
-	<string name="perf_overlay_netdrops">因網路連線丟失的影格：%1$.2f%%</string>
+	<string name="perf_overlay_netdrops">因網路連線中斷的影格：%1$.2f%%</string>
 	<string name="perf_overlay_netlatency">平均網路延遲：%1$d ms（變異：%2$d ms）</string>
 	<string name="perf_overlay_dectime">平均解碼時間：%1$.2f ms</string>
 	<string name="perf_overlay_drawdelay">延遲：%1$.2f ms</string>
 
 	<!-- Performance Report Sharing -->
 	<string name="email_prefix_message">
-		請將此電子郵件原樣發送至 artemistics.logs@gmail.com 以支持社群。\n
+		請將此電子郵件原樣傳送至 artemistics.logs@gmail.com 以支援社群。\n
 		您分享的效能數據將有助於改善並擴充資料集，該資料集可在以下位置取得：\n
 		https://tinyurl.com/artemis-performance\n\n
 	</string>
@@ -189,7 +189,7 @@
 	<string name="summary_resolution_list">提高以改善影像清晰度。降低以便在低階裝置和較慢的網路上獲得更佳效能。</string>
 	<string name="title_native_res_dialog">原生解析度警告</string>
 	<string name="text_native_res_dialog">串流伺服器可能不支援原生解析度和/或 FPS。您可能需要手動為主機電腦設定相符的自訂顯示模式。\n\n若您選擇在 NVIDIA 控制面板中建立自訂解析度以符合螢幕設定，請務必閱讀並理解 NVIDIA 對可能造成的螢幕損壞、電腦不穩定和其他潛在問題的警告。\n\n因在您的電腦上建立自訂解析度所導致的任何問題，我們概不負責。\n\n您的螢幕可能不支援必要的顯示配置。如果是這樣，您可以嘗試設定虛擬螢幕。最後，如果您的裝置或主機電腦不支援在特定解析度或更新率下進行串流，很遺憾將無法使用。</string>
-	<string name="title_fps_list">影片幀率</string>
+	<string name="title_fps_list">影片影格率</string>
 	<string name="summary_fps_list">提高可讓影片串流更流暢。降低則可在低階裝置上獲得更佳效能。</string>
 	<string name="title_seekbar_bitrate">影片位元率</string>
 	<string name="summary_seekbar_bitrate">提高以獲得更佳的影像品質。降低則可在較慢的連線上改善效能。</string>
@@ -256,7 +256,7 @@
 	<string name="title_checkbox_absolute_mouse_mode">遠端桌面滑鼠模式</string>
 	<string name="summary_checkbox_absolute_mouse_mode">可讓滑鼠加速度在遠端桌面使用時更自然，但與許多遊戲不相容。</string>
 	<string name="title_checkbox_mouse_nav_buttons">啟用上一頁/下一頁滑鼠按鍵</string>
-	<string name="summary_checkbox_mouse_nav_buttons">啟用此選項可能導致部分裝置無法正常右鍵點擊</string>
+	<string name="summary_checkbox_mouse_nav_buttons">啟用此選項可能導致部分裝置無法正常右鍵點選</string>
 
 	<string name="category_on_screen_controls_settings">螢幕控制設定</string>
 	<string name="title_checkbox_show_onscreen_controls">顯示螢幕控制按鍵</string>
@@ -294,13 +294,13 @@
 	<string name="summary_checkbox_host_audio">在電腦與此裝置同時播放音訊</string>
 
 	<string name="category_advanced_settings">進階設定</string>
-	<string name="title_unlock_fps">解鎖所有可用幀率</string>
+	<string name="title_unlock_fps">解鎖所有可用影格率</string>
 	<string name="summary_unlock_fps">在高階裝置上以 90 或 120 FPS 串流可降低延遲，但在不支援的裝置上可能造成延遲或不穩定</string>
 	<string name="title_checkbox_reduce_refresh_rate">允許降低更新率</string>
 	<string name="summary_checkbox_reduce_refresh_rate">較低的螢幕更新率可節省電力，但會增加部分影片延遲</string>
 	<string name="title_checkbox_disable_warnings">停用警告訊息</string>
 	<string name="summary_checkbox_disable_warnings">串流時停用螢幕上的連線警告訊息</string>
-	<string name="title_disable_frame_drop">永不丟幀</string>
+	<string name="title_disable_frame_drop">永不捨棄影格</string>
 	<string name="summary_disable_frame_drop">可減少部分裝置的微卡頓，但可能增加延遲</string>
 	<string name="title_video_format">變更編碼器設定</string>
 	<string name="summary_video_format">若裝置支援，較新的編碼器可降低影片頻寬需求。若主機軟體或 GPU 不支援，編碼器選擇可能被忽略。</string>
@@ -352,7 +352,7 @@
 	<string name="videoformat_hevcalways">優先使用 HEVC</string>
 	<string name="videoformat_h264always">優先使用 H.264</string>
 
-	<string name="title_frame_pacing">影片幀律控制</string>
+	<string name="title_frame_pacing">影片影格節奏控制</string>
 	<string name="summary_frame_pacing">指定如何在影片延遲與流暢度之間取得平衡</string>
 	<string name="pacing_warp">Warp Drive（實驗性）</string>
 	<string name="pacing_warp2">Warp 2（實驗性）</string>
@@ -452,7 +452,7 @@
 	<string name="summary_checkbox_mouse_local_cursor">預設會擷取外接實體滑鼠游標，本選項可顯示 Android 系統游標</string>
 
 	<string name="title_checkbox_multi_touch_gestures">啟用多點觸控手勢</string>
-	<string name="summary_checkbox_multi_touch_gestures">在多點觸控模式下：三指點擊開啟鍵盤、四指點擊開啟全鍵盤、五指點擊開啟快速選單。</string>
+	<string name="summary_checkbox_multi_touch_gestures">在多點觸控模式下：三指點選開啟鍵盤、四指點選開啟全鍵盤、五指點選開啟快速選單。</string>
 
 	<string name="title_checkbox_onscreen_style_official">官方虛擬手把外觀</string>
 	<string name="summary_checkbox_onscreen_style_official">若偏好舊版官方虛擬手把按鈕樣式，可選擇此項。\n若選擇底部虛擬按鈕，按鍵外形可為方形【一般按鍵預設為方形】</string>
@@ -463,7 +463,7 @@
 	<string name="title_checkbox_enable_perf_logging">啟用效能記錄</string>
 	<string name="summary_checkbox_enable_perf_logging">「離線時」依組態儲存效能資料。</string>
 
-	<string name="title_checkbox_enable_perf_overlay_lite_dialog">精簡模式點擊彈出快速選項</string>
+	<string name="title_checkbox_enable_perf_overlay_lite_dialog">精簡模式點選彈出快速選項</string>
 	<string name="summary_checkbox_enable_perf_overlay_lite_dialog">取代返回鍵邏輯，改為彈出遊戲快速選單。</string>
 
 	<string name="title_show_overlay_zoom_toggle_button">顯示覆蓋層縮放切換按鈕</string>
@@ -503,7 +503,7 @@
 	<string name="title_default_layout_scheme">預設佈局設定檔</string>
 	<string name="summary_default_layout_scheme">每個佈局設定檔初始皆相同（依 keyboards.json 產生），可自行刪除與調整</string>
 
-	<string name="summary_vibrate_keyboard">點擊螢幕按鍵時觸發手機震動馬達。本選項也可套用於虛擬手把按鍵。</string>
+	<string name="summary_vibrate_keyboard">點選螢幕按鍵時觸發手機震動馬達。本選項也可套用於虛擬手把按鍵。</string>
 	<string name="title_square_buttons">一般按鍵為方形</string>
 	<string name="summary_square_buttons">虛擬按鍵形狀為方形，預設為圓形。</string>
 
@@ -531,7 +531,7 @@
 	<string name="title_exdisplay_mode">外接顯示模式（Beta）</string>
 	<string name="title_fullexdisplay_mode">全外接顯示模式（Beta）</string>
 	<string name="summary_exdisplay_mode">在外接顯示器上顯示串流畫面；虛擬按鍵、效能資訊與其他控制顯示於手機螢幕。</string>
-	<string name="summary_fullexdisplay_mode">允許沉浸式副螢幕模式並自動匹配更新率與解析度。此模式下手動設定不會生效。</string>
+	<string name="summary_fullexdisplay_mode">允許沉浸式副螢幕模式並自動符合更新率與解析度。此模式下手動設定不會生效。</string>
 
 	<string name="title_top_center_display">置頂置中顯示</string>
 	<string name="summary_top_center_display">當解析度非原生時，串流畫面將對齊螢幕頂部而非置中。</string>
@@ -585,7 +585,7 @@
 	<string name="summary_back_as_guide">在手把上按下返回鍵時送出 Guide（PS/HOME）按鍵。</string>
 
 	<string name="title_checkbox_ignore_synth_events">忽略合成事件</string>
-	<string name="summary_ignore_synth_events">忽略 Android 系統發送的合成事件。可解決部分裝置上滑鼠點擊觸發其他意外按鍵的問題。\n啟用後，系統軟體鍵盤將無法使用。</string>
+	<string name="summary_ignore_synth_events">忽略 Android 系統傳送的合成事件。可解決部分裝置上滑鼠點選觸發其他意外按鍵的問題。\n啟用後，系統軟體鍵盤將無法使用。</string>
 
 	<string name="title_smart_clipboard_sync">智慧剪貼簿同步（實驗性）</string>
 	<string name="summary_smart_clipboard_sync">串流開始/恢復時自動上傳剪貼簿內容至伺服器；失去焦點時自伺服器下載（需搭配 Apollo）。</string>
@@ -610,10 +610,10 @@
 	<string name="summary_checkbox_ultra_low_latency">僅對 SD8Gen2/8(s)Gen3/8Elite 與 MTK 裝置有效。</string>
 
 	<string name="title_checkbox_forceTightThresholds">緊密 VSync（實驗性）</string>
-	<string name="summary_checkbox_forceTightThresholds">更緊的 VSync 門檻以降低延遲；可能增加掉幀。</string>
+	<string name="summary_checkbox_forceTightThresholds">更緊的 VSync 門檻以降低延遲；可能增加掉影格。</string>
 
 	<string name="title_checkbox_use_virtual_display">使用虛擬顯示器</string>
-	<string name="summary_checkbox_use_virtual_display">預設使用虛擬顯示器。\n虛擬顯示器可自動匹配用戶端解析度與幀率設定，帶來無縫的串流體驗。\n需要 Apollo 作為主機串流軟體。</string>
+	<string name="summary_checkbox_use_virtual_display">預設使用虛擬顯示器。\n虛擬顯示器可自動符合用戶端解析度與影格率設定，帶來無縫的串流體驗。\n需要 Apollo 作為主機串流軟體。</string>
 
 	<string name="title_checkbox_resume_without_confirm">快速繼續</string>
 	<string name="summary_checkbox_resume_without_confirm">按下繼續按鈕時不顯示選單，直接繼續應用程式。</string>
@@ -668,7 +668,7 @@
 	<string name="debug_info_accelerometer">+加速度計</string>
 	<string name="debug_info_gyroscope">+陀螺儀</string>
 	<string name="debug_info_stop_vibration">停止震動</string>
-	<string name="debug_info_refresh_gamepad_info">點擊以重新整理手把資訊</string>
+	<string name="debug_info_refresh_gamepad_info">點選以重新整理手把資訊</string>
 	<string name="debug_info_refresh_gamepad_list">重新整理手把清單</string>
 	<string name="debug_info_test_gamepad_rumble">測試手把震動</string>
 
@@ -697,7 +697,7 @@
 	<string name="external_display_info">外接顯示器連接：%1$dx%2$d，%3$.1fHz</string>
 	<string name="notification_channel_name">外接顯示控制</string>
 	<string name="notification_title">外接顯示已啟用</string>
-	<string name="notification_text">點擊以開啟觸控板控制器</string>
+	<string name="notification_text">點選以開啟觸控板控制器</string>
 	<string name="permission_denied">通知權限被拒</string>
 	<string name="no_external_display">未偵測到外接顯示器</string>
 	<string name="no_game_instance">沒有可用的遊戲實例</string>
@@ -788,8 +788,8 @@
 	<string name="rename">重新命名</string>
 	<string name="save">儲存</string>
 
-	<string name="title_low_latency_frame_balance">低延遲隊列（實驗性）</string>
-	<string name="summary_low_latency_frame_balance">透過丟棄緩衝幀以最小化延遲。</string>
+	<string name="title_low_latency_frame_balance">低延遲佇列（實驗性）</string>
+	<string name="summary_low_latency_frame_balance">透過捨棄緩衝影格以最小化延遲。</string>
 	<string name="category_perf_monitor_settings">效能監視器</string>
 	<string name="category_perf_charts">效能圖表</string>
 	<string name="desc_chart_latency">網路延遲圖表</string>
@@ -806,4 +806,36 @@
 
 	<string name="title_checkbox_full_screen">啟用全螢幕</string>
 	<string name="summary_checkbox_full_screen">以沉浸模式隱藏系統列</string>
+
+    <string name="vc_config_title">設定</string>
+    <string name="vc_config_move">移動</string>
+    <string name="vc_config_resize">調整大小</string>
+    <string name="toast_mouse_emulation_on">滑鼠模擬：開啟</string>
+    <string name="toast_mouse_emulation_off">滑鼠模擬：關閉</string>
+    <string name="toast_hdr_display_unsupported">此顯示器不支援 HDR10</string>
+    <string name="toast_hdr_requires_android7">HDR 需要 Android 7.0 或更新版本</string>
+    <string name="toast_hdr_decoder_unsupported">解碼器不支援 HDR10 規格</string>
+    <string name="toast_no_hevc_decoder">找不到 HEVC 解碼器</string>
+    <string name="toast_no_av1_decoder">找不到 AV1 解碼器</string>
+    <string name="error_no_h264_hw_decoder">此裝置或 ROM 不支援 H.264 硬體加速播放。</string>
+    <string name="toast_language_reset_default">語言已重設為預設值，請重新啟動應用程式！</string>
+    <string name="summary_hdr_shield_update">請更新 NVIDIA SHIELD Android TV 的韌體以啟用 HDR</string>
+    <string name="error_session_not_yours_quit">此工作階段並非由本裝置啟動，因此無法結束。請在原本的裝置或電腦上結束串流。（錯誤代碼：%1$d）</string>
+    <string name="error_session_not_yours_resume">此工作階段並非由本裝置啟動，因此無法繼續。請在原本的裝置或電腦上結束串流後再試一次。（錯誤代碼：%1$d）</string>
+    <string name="toast_error_loading_custom_keys">載入自訂按鍵時發生錯誤：%1$s</string>
+    <string name="error_reading_art_file">讀取 .art 檔案時發生錯誤：%1$s</string>
+    <string name="cd_edit_profile">編輯設定檔</string>
+    <string name="cd_delete_profile">刪除設定檔</string>
+    <string name="nv_server_version_malformed">伺服器版本格式不正確</string>
+    <string name="nv_not_paired">此裝置尚未與電腦配對</string>
+    <string name="nv_hdr_unsupported_sdr">您電腦的 GPU 不支援串流 HDR，將改用 SDR 串流。</string>
+    <string name="nv_host_no_above_4k">您的主機電腦不支援高於 4K 的串流解析度。</string>
+    <string name="nv_client_needs_hevc_av1">若要以高於 4K 的解析度串流，您的串流裝置必須支援 HEVC 或 AV1。</string>
+    <string name="nv_update_gfe_for_4k">您必須更新 GeForce Experience 才能串流 4K，目前將改用 1080p 串流。</string>
+    <string name="nv_app_not_in_list">應用程式「%1$s」不在 GFE 應用程式清單中</string>
+    <string name="nv_resume_failed">無法繼續現有的工作階段</string>
+    <string name="nv_app_minimized">此應用程式已最小化。請在電腦上手動還原，或結束工作階段後重新開始串流。</string>
+    <string name="nv_quit_previous_failed">無法結束先前的工作階段！請手動結束。</string>
+    <string name="nv_launch_failed">無法啟動應用程式</string>
+    <string name="language_default">預設</string>
 </resources>

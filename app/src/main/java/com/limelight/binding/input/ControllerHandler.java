@@ -3099,7 +3099,7 @@ public class ControllerHandler implements InputManager.InputDeviceListener, UsbD
         public void toggleMouseEmulation() {
             mainThreadHandler.removeCallbacks(mouseEmulationRunnable);
             mouseEmulationActive = !mouseEmulationActive;
-            Toast.makeText(activityContext, "Mouse emulation is: " + (mouseEmulationActive ? "ON" : "OFF"), Toast.LENGTH_SHORT).show();
+            Toast.makeText(activityContext, mouseEmulationActive ? R.string.toast_mouse_emulation_on : R.string.toast_mouse_emulation_off, Toast.LENGTH_SHORT).show();
 
             if (mouseEmulationActive) {
                 mainThreadHandler.postDelayed(mouseEmulationRunnable, mouseEmulationReportPeriod);

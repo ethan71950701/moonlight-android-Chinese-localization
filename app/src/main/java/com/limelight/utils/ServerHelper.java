@@ -207,9 +207,7 @@ public class ServerHelper {
                 } catch (HostHttpResponseException e) {
                     failed = true;
                     if (e.getErrorCode() == 599) {
-                        message = "This session wasn't started by this device," +
-                                " so it cannot be quit. End streaming on the original " +
-                                "device or the PC itself. (Error code: "+e.getErrorCode()+")";
+                        message = parent.getResources().getString(R.string.error_session_not_yours_quit, e.getErrorCode());
                     }
                     else {
                         message = e.getMessage();
