@@ -75,7 +75,7 @@ public final class RemoteWakeUi {
     }
 
     /** Sends the wake message on a background thread and reports the outcome on the main thread. */
-    private static void sendWakeAsync(Context context, Runnable onStart, Runnable onFinish) {
+    private static void sendWakeAsync(Context context, String mac, Runnable onStart, Runnable onFinish) {
         final Context appContext = context.getApplicationContext();
         final android.os.Handler main = new android.os.Handler(android.os.Looper.getMainLooper());
 
@@ -85,7 +85,7 @@ public final class RemoteWakeUi {
         Toast.makeText(appContext, R.string.remote_wake_sending, Toast.LENGTH_SHORT).show();
 
         new Thread(() -> {
-            FcmSender.Result result = FcmSender.sendWake(appContext);
+            FcmSender.Result result = FcmSender.sendWake(appContext, mac);
             main.post(() -> {
                 Toast.makeText(appContext, describe(appContext, result), Toast.LENGTH_LONG).show();
                 if (onFinish != null) {
@@ -126,12 +126,27 @@ public final class RemoteWakeUi {
             return;
         }
 
-        button.setOnClickListener(v -> sendWakeAsync(activity,
+        button.setOnClickListener(v -> sendWakeAsync(activity, null,
                 () -> button.setEnabled(false),
                 () -> button.setEnabled(true)));
 
         refreshMainScreen(activity);
         maybeShowFirstLaunchTokenDialog(activity);
+    }
+
+    /** True when this device can send remote wake messages (token and service account are set). */
+    public static boolean canSend(Context context) {
+        return RemoteWakeConfig.isSenderConfigured(context);
+    }
+
+    /** Wakes one specific computer (from the PC list menu) through the receiver. */
+    public static void sendWakeForComputer(Activity activity, String macAddress) {
+        String mac = RemoteWakeConfig.normalizeMac(macAddress);
+        if (mac == null) {
+            Toast.makeText(activity, R.string.wol_no_mac, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        sendWakeAsync(activity, mac, null, null);
     }
 
     /** Shows the wake button only when the sender side is fully configured. */
@@ -193,29 +208,32 @@ public final class RemoteWakeUi {
         final Context context = fragment.requireContext();
         final SharedPreferences prefs = RemoteWakeConfig.prefs(context);
 
-        // Receiver: MAC address
+        // Receiver: allow list of MAC addresses (one per line)
         final EditTextPreference macPref = fragment.findPreference(RemoteWakeConfig.KEY_MAC);
         if (macPref != null) {
             macPref.setOnBindEditTextListener(edit -> {
-                edit.setInputType(InputType.TYPE_CLASS_TEXT);
+                edit.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+                edit.setSingleLine(false);
+                edit.setMinLines(3);
                 edit.setHint("AA:BB:CC:DD:EE:FF");
             });
             macPref.setSummaryProvider(p -> {
-                String mac = RemoteWakeConfig.normalizeMac(((EditTextPreference) p).getText());
-                return mac != null ? mac : context.getString(R.string.remote_wake_unset);
+                java.util.List<String> macs = RemoteWakeConfig.parseMacList(((EditTextPreference) p).getText());
+                return macs.isEmpty()
+                        ? context.getString(R.string.remote_wake_unset)
+                        : android.text.TextUtils.join("\n", macs);
             });
             macPref.setOnPreferenceChangeListener((p, newValue) -> {
-                String text = String.valueOf(newValue).trim();
-                if (text.isEmpty()) {
-                    return true;
-                }
-                String normalized = RemoteWakeConfig.normalizeMac(text);
-                if (normalized == null) {
-                    Toast.makeText(context, R.string.remote_wake_mac_invalid, Toast.LENGTH_LONG).show();
+                String text = String.valueOf(newValue);
+                String invalid = RemoteWakeConfig.findInvalidMac(text);
+                if (invalid != null) {
+                    Toast.makeText(context, context.getString(R.string.remote_wake_mac_invalid, invalid),
+                            Toast.LENGTH_LONG).show();
                     return false;
                 }
-                // Store the normalized form instead of what the user typed.
-                ((EditTextPreference) p).setText(normalized);
+                // Store the normalized list instead of what the user typed.
+                ((EditTextPreference) p).setText(
+                        android.text.TextUtils.join("\n", RemoteWakeConfig.parseMacList(text)));
                 return false;
             });
         }
@@ -312,7 +330,7 @@ public final class RemoteWakeUi {
         final Preference sendPref = fragment.findPreference("remote_wake_send_now");
         if (sendPref != null) {
             sendPref.setOnPreferenceClickListener(p -> {
-                sendWakeAsync(context, () -> sendPref.setEnabled(false), () -> sendPref.setEnabled(true));
+                sendWakeAsync(context, null, () -> sendPref.setEnabled(false), () -> sendPref.setEnabled(true));
                 return true;
             });
         }

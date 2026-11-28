@@ -840,9 +840,9 @@
     <string name="category_remote_wake">遠端喚醒（FCM）</string>
     <string name="title_remote_wake_receiver">啟用喚醒接收端</string>
     <string name="summary_remote_wake_receiver">適用於在家中持續插電的手機。收到 Firebase 雲端訊息（FCM）的喚醒指令時，會在區域網路內傳送 Wake-on-LAN 封包，不會使用常駐前景服務。</string>
-    <string name="title_remote_wake_mac">要喚醒的電腦 MAC 位址</string>
+    <string name="title_remote_wake_mac">允許喚醒的電腦 MAC 位址</string>
     <string name="remote_wake_unset">尚未設定</string>
-    <string name="remote_wake_mac_invalid">MAC 位址格式不正確，範例：AA:BB:CC:DD:EE:FF</string>
+    <string name="remote_wake_mac_invalid">MAC 位址格式不正確：%1$s，範例：AA:BB:CC:DD:EE:FF</string>
     <string name="title_remote_wake_own_token">本機 FCM token</string>
     <string name="summary_remote_wake_own_token_tap">點一下即可取得並複製</string>
     <string name="remote_wake_token_copied">已複製 FCM token</string>
@@ -871,4 +871,6 @@
     <string name="remote_wake_err_network">網路連線失敗（%1$s）</string>
     <string name="remote_wake_err_auth">驗證失敗或權限不足，請檢查服務帳戶的角色、FCM API 是否已啟用，以及本機時間是否正確。（%1$s）</string>
     <string name="remote_wake_err_invalid_token">接收端 token 無效或已失效，請從接收端重新複製。（%1$s）</string>
+    <string name="summary_remote_wake_mac">每行填一個 MAC 位址。指定了不在清單內的電腦時，喚醒訊息會被忽略；沒有指定電腦時，會喚醒清單中的第一台。</string>
+    <string name="pcview_menu_remote_wake">遠端喚醒（FCM）</string>
 </resources>

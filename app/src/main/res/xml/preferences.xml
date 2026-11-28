@@ -955,6 +955,7 @@
             app:iconSpaceReserved="false" />
 
         <EditTextPreference
+            android:dialogMessage="@string/summary_remote_wake_mac"
             android:dialogTitle="@string/title_remote_wake_mac"
             android:key="remote_wake_mac"
             android:title="@string/title_remote_wake_mac"

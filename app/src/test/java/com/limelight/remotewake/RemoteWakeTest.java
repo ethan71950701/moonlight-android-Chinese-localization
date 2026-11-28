@@ -113,4 +113,41 @@ public class RemoteWakeTest {
                 FcmSender.errorSummary("{\"error\":\"invalid_grant\",\"error_description\":\"Invalid JWT\"}"));
         assertEquals("plain text", FcmSender.errorSummary("plain text"));
     }
+
+    @Test
+    public void parseMacListNormalizesDeduplicatesAndSkipsInvalid() {
+        java.util.List<String> macs = RemoteWakeConfig.parseMacList(
+                "AA:BB:CC:DD:EE:FF\n11-22-33-44-55-66, aabbccddeeff;bogus");
+        assertEquals(java.util.Arrays.asList("aa:bb:cc:dd:ee:ff", "11:22:33:44:55:66"), macs);
+        assertTrue(RemoteWakeConfig.parseMacList(null).isEmpty());
+        assertTrue(RemoteWakeConfig.parseMacList("  \n ").isEmpty());
+    }
+
+    @Test
+    public void findInvalidMacReportsFirstBadEntry() {
+        assertNull(RemoteWakeConfig.findInvalidMac("AA:BB:CC:DD:EE:FF\n11:22:33:44:55:66"));
+        assertNull(RemoteWakeConfig.findInvalidMac(""));
+        assertEquals("zz", RemoteWakeConfig.findInvalidMac("AA:BB:CC:DD:EE:FF\nzz"));
+    }
+
+    @Test
+    public void requestJsonIsHighPriorityDataMessage() {
+        JsonObject root = JsonParser.parseString(
+                FcmSender.buildRequestJson("TOKEN123", "aa:bb:cc:dd:ee:ff")).getAsJsonObject();
+        JsonObject message = root.getAsJsonObject("message");
+        assertEquals("TOKEN123", message.get("token").getAsString());
+        assertEquals("wake", message.getAsJsonObject("data").get("action").getAsString());
+        assertEquals("aa:bb:cc:dd:ee:ff", message.getAsJsonObject("data").get("mac").getAsString());
+        assertEquals("HIGH", message.getAsJsonObject("android").get("priority").getAsString());
+        assertEquals("60s", message.getAsJsonObject("android").get("ttl").getAsString());
+        assertTrue("no notification block: data-only message", !message.has("notification"));
+    }
+
+    @Test
+    public void requestJsonOmitsMacWhenNotGiven() {
+        JsonObject data = JsonParser.parseString(FcmSender.buildRequestJson("T", null))
+                .getAsJsonObject().getAsJsonObject("message").getAsJsonObject("data");
+        assertTrue(!data.has("mac"));
+        assertEquals("wake", data.get("action").getAsString());
+    }
 }

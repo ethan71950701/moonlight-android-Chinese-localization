@@ -137,6 +137,7 @@ public class PcView extends AppCompatActivity implements AdapterFragmentCallback
     private final static int GAMESTREAM_EOL_ID = 11;
     private final static int OPEN_MANAGEMENT_PAGE_ID = 20;
     private final static int PAIR_ID_OTP = 21;
+    private final static int REMOTE_WAKE_ID = 22;
 
     private void initializeViews() {
         setContentView(R.layout.activity_pc_view);
@@ -433,6 +434,9 @@ public class PcView extends AppCompatActivity implements AdapterFragmentCallback
         if (computer.details.state == ComputerDetails.State.OFFLINE ||
             computer.details.state == ComputerDetails.State.UNKNOWN) {
             menu.add(Menu.NONE, WOL_ID, 1, getResources().getString(R.string.pcview_menu_send_wol));
+            if (RemoteWakeUi.canSend(this)) {
+                menu.add(Menu.NONE, REMOTE_WAKE_ID, 1, getResources().getString(R.string.pcview_menu_remote_wake));
+            }
             menu.add(Menu.NONE, GAMESTREAM_EOL_ID, 2, getResources().getString(R.string.pcview_menu_eol));
         }
         else if (computer.details.pairState != PairState.PAIRED) {
@@ -753,6 +757,10 @@ public class PcView extends AppCompatActivity implements AdapterFragmentCallback
 
             case WOL_ID:
                 doWakeOnLan(computer.details);
+                return true;
+
+            case REMOTE_WAKE_ID:
+                RemoteWakeUi.sendWakeForComputer(this, computer.details.macAddress);
                 return true;
 
             case DELETE_ID:

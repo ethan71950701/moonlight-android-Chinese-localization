@@ -53,19 +53,27 @@ public final class FcmSender {
 
     private FcmSender() {}
 
+    /** Wakes the receiver's default (first allowed) computer. */
     public static Result sendWake(Context context) {
+        return sendWake(context, null);
+    }
+
+    /**
+     * @param mac the computer to wake, or null to let the receiver use its default one
+     */
+    public static Result sendWake(Context context, String mac) {
         ServiceAccount account = RemoteWakeConfig.getServiceAccount(context);
         String targetToken = RemoteWakeConfig.getTargetToken(context);
         if (account == null || targetToken.isEmpty()) {
             return new Result(Status.NOT_CONFIGURED, "");
         }
-        return sendWake(account, targetToken);
+        return sendWake(account, targetToken, mac);
     }
 
-    static Result sendWake(ServiceAccount account, String targetToken) {
+    static Result sendWake(ServiceAccount account, String targetToken, String mac) {
         try {
             String accessToken = getAccessToken(account);
-            return postMessage(account, accessToken, targetToken);
+            return postMessage(account, accessToken, targetToken, mac);
         } catch (AuthException e) {
             return new Result(Status.AUTH, e.getMessage());
         } catch (GeneralSecurityException e) {
@@ -118,10 +126,14 @@ public final class FcmSender {
         }
     }
 
-    private static Result postMessage(ServiceAccount account, String accessToken, String targetToken) throws IOException {
+    /** Builds the FCM HTTP v1 request body. */
+    static String buildRequestJson(String targetToken, String mac) {
         JsonObject data = new JsonObject();
         data.addProperty("action", "wake");
         data.addProperty("ts", String.valueOf(System.currentTimeMillis()));
+        if (mac != null && !mac.isEmpty()) {
+            data.addProperty("mac", mac);
+        }
 
         JsonObject android = new JsonObject();
         android.addProperty("priority", "HIGH");
@@ -135,11 +147,14 @@ public final class FcmSender {
 
         JsonObject root = new JsonObject();
         root.add("message", message);
+        return root.toString();
+    }
 
+    private static Result postMessage(ServiceAccount account, String accessToken, String targetToken, String mac) throws IOException {
         Request request = new Request.Builder()
                 .url("https://fcm.googleapis.com/v1/projects/" + account.projectId + "/messages:send")
                 .header("Authorization", "Bearer " + accessToken)
-                .post(RequestBody.create(root.toString(), JSON))
+                .post(RequestBody.create(buildRequestJson(targetToken, mac), JSON))
                 .build();
 
         try (Response response = CLIENT.newCall(request).execute()) {

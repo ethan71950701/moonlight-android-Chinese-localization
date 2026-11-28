@@ -783,9 +783,9 @@
     <string name="category_remote_wake">Remote Wake (FCM)</string>
     <string name="title_remote_wake_receiver">Enable wake receiver</string>
     <string name="summary_remote_wake_receiver">For a phone that stays plugged in at home. When a wake message arrives from Firebase Cloud Messaging, it sends a Wake-on-LAN packet to your local network. No foreground service is used.</string>
-    <string name="title_remote_wake_mac">MAC address of the PC to wake</string>
+    <string name="title_remote_wake_mac">Allowed MAC addresses to wake</string>
     <string name="remote_wake_unset">Not set</string>
-    <string name="remote_wake_mac_invalid">Invalid MAC address. Example: AA:BB:CC:DD:EE:FF</string>
+    <string name="remote_wake_mac_invalid">Invalid MAC address: %1$s. Example: AA:BB:CC:DD:EE:FF</string>
     <string name="title_remote_wake_own_token">This device\'s FCM token</string>
     <string name="summary_remote_wake_own_token_tap">Tap to fetch and copy the token</string>
     <string name="remote_wake_token_copied">FCM token copied</string>
@@ -814,4 +814,6 @@
     <string name="remote_wake_err_network">Network error (%1$s)</string>
     <string name="remote_wake_err_auth">Authentication or permission denied. Check the service account role, whether the FCM API is enabled, and this device\'s clock. (%1$s)</string>
     <string name="remote_wake_err_invalid_token">The receiver token is invalid or no longer registered. Copy it again from the receiver. (%1$s)</string>
+    <string name="summary_remote_wake_mac">Enter one MAC address per line. A wake message that names a computer not on this list is ignored. A message without a MAC wakes the first one.</string>
+    <string name="pcview_menu_remote_wake">Remote wake (FCM)</string>
 </resources>

@@ -5,7 +5,11 @@ import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 /**
  * Preference keys and small helpers shared by the remote wake receiver and sender.
@@ -52,6 +56,40 @@ public final class RemoteWakeConfig {
             sb.append(hex, i, i + 2);
         }
         return sb.toString();
+    }
+
+    /**
+     * Splits a user supplied list (one MAC per line; commas, semicolons and spaces also work)
+     * into normalized, de-duplicated MAC addresses. Invalid entries are skipped.
+     */
+    public static List<String> parseMacList(String raw) {
+        Set<String> result = new LinkedHashSet<>();
+        if (raw != null) {
+            for (String token : raw.split("[\\s,;]+")) {
+                String mac = normalizeMac(token);
+                if (mac != null) {
+                    result.add(mac);
+                }
+            }
+        }
+        return new ArrayList<>(result);
+    }
+
+    /** Returns the first entry of the list that is not a valid MAC address, or null if all are valid. */
+    public static String findInvalidMac(String raw) {
+        if (raw == null) {
+            return null;
+        }
+        for (String token : raw.split("[\\s,;]+")) {
+            if (!token.isEmpty() && normalizeMac(token) == null) {
+                return token;
+            }
+        }
+        return null;
+    }
+
+    public static List<String> getAllowedMacs(Context context) {
+        return parseMacList(prefs(context).getString(KEY_MAC, ""));
     }
 
     public static String getTargetToken(Context context) {

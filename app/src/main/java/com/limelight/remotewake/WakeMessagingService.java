@@ -11,6 +11,8 @@ import com.limelight.LimeLog;
 import com.limelight.nvstream.wol.WakeOnLanSender;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,7 +28,7 @@ public class WakeMessagingService extends FirebaseMessagingService {
     private static final long ROUND_GAP_MS = 300;
 
     private static final Object LOCK = new Object();
-    private static long lastWakeElapsed = -MIN_INTERVAL_MS;
+    private static final Map<String, Long> lastWakeElapsed = new HashMap<>();
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage message) {
@@ -41,19 +43,34 @@ public class WakeMessagingService extends FirebaseMessagingService {
             return;
         }
 
-        String mac = RemoteWakeConfig.normalizeMac(prefs.getString(RemoteWakeConfig.KEY_MAC, ""));
-        if (mac == null) {
-            LimeLog.warning("RemoteWake: wake message ignored, MAC address is not configured");
+        List<String> allowed = RemoteWakeConfig.parseMacList(prefs.getString(RemoteWakeConfig.KEY_MAC, ""));
+        if (allowed.isEmpty()) {
+            LimeLog.warning("RemoteWake: wake message ignored, no MAC address is configured");
             return;
+        }
+
+        // No MAC in the message: wake the default (first) computer. Otherwise the
+        // requested computer must be on the allow list.
+        String requested = data.get("mac");
+        final String mac;
+        if (requested == null || requested.isEmpty()) {
+            mac = allowed.get(0);
+        } else {
+            mac = RemoteWakeConfig.normalizeMac(requested);
+            if (mac == null || !allowed.contains(mac)) {
+                LimeLog.warning("RemoteWake: wake message ignored, MAC is not on the allow list");
+                return;
+            }
         }
 
         synchronized (LOCK) {
             long now = SystemClock.elapsedRealtime();
-            if (now - lastWakeElapsed < MIN_INTERVAL_MS) {
+            Long last = lastWakeElapsed.get(mac);
+            if (last != null && now - last < MIN_INTERVAL_MS) {
                 LimeLog.info("RemoteWake: duplicate wake message ignored");
                 return;
             }
-            lastWakeElapsed = now;
+            lastWakeElapsed.put(mac, now);
         }
 
         // UDP is unreliable, so send a few rounds of the magic packet.
