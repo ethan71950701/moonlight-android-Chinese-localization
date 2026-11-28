@@ -775,4 +775,8 @@
     <string name="nv_quit_previous_failed">Failed to quit previous session! You must quit it manually</string>
     <string name="nv_launch_failed">Failed to launch application</string>
     <string name="language_default">Default</string>
+    <string name="label_streaming_settings">Streaming Settings</string>
+    <string name="label_service_discovery">mDNS PC Auto-Discovery Service</string>
+    <string name="label_service_computer_manager">Computer Management Service</string>
+    <string name="label_service_usb_driver">USB Driver Service</string>
 </resources>

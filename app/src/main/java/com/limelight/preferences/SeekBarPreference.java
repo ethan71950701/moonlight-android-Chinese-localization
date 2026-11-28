@@ -146,7 +146,7 @@ public class SeekBarPreference extends Preference
         dialogBuilder.setTitle(getTitle());
         dialogBuilder.setView(layout);
 
-        dialogBuilder.setPositiveButton("OK", (dialog, which) -> {
+        dialogBuilder.setPositiveButton(android.R.string.ok, (dialog, which) -> {
             if (shouldPersist()) {
                 currentValue = seekBar.getProgress() + minValue;
                 persistInt(currentValue);

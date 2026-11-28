@@ -167,7 +167,7 @@ public class EditProfileActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.profile_manager_edit_profile_name)
                 .setView(input)
-                .setPositiveButton("OK", (dialog, which) -> {
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                     String newName = input.getText().toString().trim();
                     if (newName.isEmpty()) {
                         Toast.makeText(this, R.string.profile_manager_name_cannot_be_blank, Toast.LENGTH_SHORT).show();

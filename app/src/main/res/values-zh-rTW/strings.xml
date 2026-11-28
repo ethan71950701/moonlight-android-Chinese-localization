@@ -832,4 +832,8 @@
     <string name="nv_quit_previous_failed">無法結束先前的工作階段！請手動結束。</string>
     <string name="nv_launch_failed">無法啟動應用程式</string>
     <string name="language_default">預設</string>
+    <string name="label_streaming_settings">串流設定</string>
+    <string name="label_service_discovery">mDNS 電腦自動探索服務</string>
+    <string name="label_service_computer_manager">電腦管理服務</string>
+    <string name="label_service_usb_driver">USB 驅動程式服務</string>
 </resources>

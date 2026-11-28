@@ -166,7 +166,7 @@
             android:resizeableActivity="true"
             android:enableOnBackInvokedCallback="true"
             android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
-            android:label="Streaming Settings"
+            android:label="@string/label_streaming_settings"
             android:theme="@style/SettingsTheme"
             >
             <meta-data android:name="WindowManagerPreference:FreeformWindowSize" android:value="system-default" />
@@ -179,7 +179,7 @@
             android:windowSoftInputMode="stateVisible"
             android:enableOnBackInvokedCallback="true"
             android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
-            android:label="Add Computer Manually">
+            android:label="@string/title_add_pc">
             <meta-data android:name="WindowManagerPreference:FreeformWindowSize" android:value="system-default" />
             <meta-data android:name="WindowManagerPreference:FreeformWindowOrientation" android:value="landscape" />
 
@@ -217,13 +217,13 @@
 
         <service
             android:name=".discovery.DiscoveryService"
-            android:label="mDNS PC Auto-Discovery Service" />
+            android:label="@string/label_service_discovery" />
         <service
             android:name=".computers.ComputerManagerService"
-            android:label="Computer Management Service" />
+            android:label="@string/label_service_computer_manager" />
         <service
             android:name=".binding.input.driver.UsbDriverService"
-            android:label="Usb Driver Service" />
+            android:label="@string/label_service_usb_driver" />
 
         <activity
             android:name=".HelpActivity"
