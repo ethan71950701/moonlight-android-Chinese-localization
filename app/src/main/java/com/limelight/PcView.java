@@ -17,6 +17,7 @@ import com.limelight.nvstream.http.NvHTTP;
 import com.limelight.nvstream.http.PairingManager;
 import com.limelight.nvstream.http.PairingManager.PairState;
 import com.limelight.nvstream.wol.WakeOnLanSender;
+import com.limelight.remotewake.RemoteWakeUi;
 import com.limelight.preferences.AddComputerManually;
 import com.limelight.preferences.GlPreferences;
 import com.limelight.preferences.PreferenceConfiguration;
@@ -184,6 +185,8 @@ public class PcView extends AppCompatActivity implements AdapterFragmentCallback
                 startActivity(new Intent(PcView.this, ProfilesActivity.class));
             }
         });
+
+        RemoteWakeUi.setupMainScreen(this);
 
         // Amazon review didn't like the help button because the wiki was not entirely
         // navigable via the Fire TV remote (though the relevant parts were). Let's hide
@@ -370,6 +373,8 @@ public class PcView extends AppCompatActivity implements AdapterFragmentCallback
     @Override
     protected void onResume() {
         super.onResume();
+
+        RemoteWakeUi.refreshMainScreen(this);
 
         // Display a decoder crash notification if we've returned after a crash
         UiHelper.showDecoderCrashDialog(this);

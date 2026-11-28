@@ -779,4 +779,39 @@
     <string name="label_service_discovery">mDNS PC Auto-Discovery Service</string>
     <string name="label_service_computer_manager">Computer Management Service</string>
     <string name="label_service_usb_driver">USB Driver Service</string>
+
+    <string name="category_remote_wake">Remote Wake (FCM)</string>
+    <string name="title_remote_wake_receiver">Enable wake receiver</string>
+    <string name="summary_remote_wake_receiver">For a phone that stays plugged in at home. When a wake message arrives from Firebase Cloud Messaging, it sends a Wake-on-LAN packet to your local network. No foreground service is used.</string>
+    <string name="title_remote_wake_mac">MAC address of the PC to wake</string>
+    <string name="remote_wake_unset">Not set</string>
+    <string name="remote_wake_mac_invalid">Invalid MAC address. Example: AA:BB:CC:DD:EE:FF</string>
+    <string name="title_remote_wake_own_token">This device\'s FCM token</string>
+    <string name="summary_remote_wake_own_token_tap">Tap to fetch and copy the token</string>
+    <string name="remote_wake_token_copied">FCM token copied</string>
+    <string name="remote_wake_firebase_not_configured">Firebase is not set up in this build. Add google-services.json and rebuild.</string>
+    <string name="remote_wake_token_failed">Failed to get the FCM token: %1$s</string>
+    <string name="dialog_remote_wake_token_title">This device\'s FCM token</string>
+    <string name="dialog_remote_wake_token_message">Copy this token into the Remote Wake settings of the controlling device.</string>
+    <string name="remote_wake_copy">Copy</string>
+    <string name="remote_wake_close">Close</string>
+    <string name="title_remote_wake_target_token">Receiver FCM token</string>
+    <string name="title_remote_wake_service_account">Firebase service account JSON</string>
+    <string name="remote_wake_service_account_unset">Not imported. Tap to choose the JSON key file.</string>
+    <string name="remote_wake_service_account_summary">Project: %1$s\n%2$s</string>
+    <string name="remote_wake_service_account_imported">Imported the service account of project %1$s</string>
+    <string name="remote_wake_service_account_invalid">This is not a valid service account JSON file: %1$s</string>
+    <string name="title_remote_wake_clear_service_account">Remove service account JSON</string>
+    <string name="summary_remote_wake_clear_service_account">Delete the stored private key from this device</string>
+    <string name="remote_wake_service_account_cleared">Service account removed</string>
+    <string name="title_remote_wake_send">Send wake command</string>
+    <string name="summary_remote_wake_send">Send a high priority FCM data message (action=wake) to the receiver</string>
+    <string name="cd_remote_wake">Remote wake</string>
+    <string name="remote_wake_sending">Sending wake command…</string>
+    <string name="remote_wake_sent">Wake command sent</string>
+    <string name="remote_wake_failed">Failed to send wake command: %1$s</string>
+    <string name="remote_wake_err_not_configured">The receiver token or the service account JSON is missing</string>
+    <string name="remote_wake_err_network">Network error (%1$s)</string>
+    <string name="remote_wake_err_auth">Authentication or permission denied. Check the service account role, whether the FCM API is enabled, and this device\'s clock. (%1$s)</string>
+    <string name="remote_wake_err_invalid_token">The receiver token is invalid or no longer registered. Copy it again from the receiver. (%1$s)</string>
 </resources>

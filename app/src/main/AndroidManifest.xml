@@ -216,6 +216,14 @@
         </activity>
 
         <service
+            android:name=".remotewake.WakeMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service
             android:name=".discovery.DiscoveryService"
             android:label="@string/label_service_discovery" />
         <service

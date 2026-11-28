@@ -943,6 +943,57 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="category_remote_wake"
+        android:title="@string/category_remote_wake"
+        app:iconSpaceReserved="false">
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="checkbox_remote_wake_receiver"
+            android:summary="@string/summary_remote_wake_receiver"
+            android:title="@string/title_remote_wake_receiver"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/title_remote_wake_mac"
+            android:key="remote_wake_mac"
+            android:title="@string/title_remote_wake_mac"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="remote_wake_own_token"
+            android:persistent="false"
+            android:title="@string/title_remote_wake_own_token"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/title_remote_wake_target_token"
+            android:key="remote_wake_target_token"
+            android:title="@string/title_remote_wake_target_token"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="remote_wake_service_account_json"
+            android:persistent="false"
+            android:title="@string/title_remote_wake_service_account"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="remote_wake_clear_service_account"
+            android:persistent="false"
+            android:summary="@string/summary_remote_wake_clear_service_account"
+            android:title="@string/title_remote_wake_clear_service_account"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="remote_wake_send_now"
+            android:persistent="false"
+            android:summary="@string/summary_remote_wake_send"
+            android:title="@string/title_remote_wake_send"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="category_advanced_settings"
         android:title="@string/category_advanced_settings"
         app:initialExpandedChildrenCount="1"

@@ -10,6 +10,8 @@ import com.limelight.LimeLog;
 import com.limelight.nvstream.http.ComputerDetails;
 
 public class WakeOnLanSender {
+    private static final int DEFAULT_HTTP_PORT = 47989;
+
     // These ports will always be tried as-is.
     private static final int[] STATIC_PORTS_TO_TRY = new int[] {
         9, // Standard WOL port (privileged port)
@@ -58,6 +60,19 @@ public class WakeOnLanSender {
         }
     }
     
+    /**
+     * Sends a magic packet for the given MAC address to the local network
+     * using the same ports as {@link #sendWolPacket(ComputerDetails)}, but without
+     * needing a known computer: only the limited broadcast address is used.
+     */
+    public static void sendWolPacket(String macAddress) throws IOException {
+        byte[] payload = createWolPayload(macAddress);
+
+        try (final DatagramSocket sock = new DatagramSocket(0)) {
+            sendPacketsForAddress(InetAddress.getByName("255.255.255.255"), DEFAULT_HTTP_PORT, sock, payload);
+        }
+    }
+
     public static void sendWolPacket(ComputerDetails computer) throws IOException {
         byte[] payload = createWolPayload(computer);
         IOException lastException = null;
@@ -129,8 +144,12 @@ public class WakeOnLanSender {
     }
     
     private static byte[] createWolPayload(ComputerDetails computer) {
+        return createWolPayload(computer.macAddress);
+    }
+
+    private static byte[] createWolPayload(String macString) {
         byte[] payload = new byte[102];
-        byte[] macAddress = macStringToBytes(computer.macAddress);
+        byte[] macAddress = macStringToBytes(macString);
         int i;
         
         // 6 bytes of FF
